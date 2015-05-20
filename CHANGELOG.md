@@ -2,6 +2,12 @@
 
 ## Main branch
 
+### 33.1.0
+* Removed defense timer messages now that the defense timers were removed from AMG
+
+### 33.0.0
+* Added proper support for hot reloading
+
 ### 32.2.0
 * Throttled MCC+bot to 2s/msg
 

@@ -1,5 +1,5 @@
 /**
- * MCC+ v33.0.0
+ * MCC+ v33.1.0
  * Created for "A Mining Game", http://www.trugul.com/
  * Authors:
  * - TehShortbus (original script)
@@ -64,7 +64,7 @@
 
 			// Settings
 			var mccPlus_GB_Timeout = 624;
-			var mccPlus_Version = "33.0.0";
+			var mccPlus_Version = "33.1.0";
 			var mccPlus_Version_Date = "2015-05-20 - 20:23 UTC";
 			var mccPlus_RBUp = "";
 			var mccPlus_Raid = "";
@@ -188,13 +188,6 @@
 						raidText += "LOST ➨ Lost (" + shortenAmount(raidResults.dK) + ") ✦ Killed (" + shortenAmount(raidResults.eK) + ")";
 					}
 
-					// Tell the group when the target's raid defense wears off
-					setTimeout(function() {
-						silenceConditional('★★ ' + raidResults.u + " CAN BE RAIDED AGAIN");
-						mccPlus_Raid = mccPlus_Raid + "!";
-						updateTitle();
-					}, 60 * 10 * 1000);
-
 
 				} else {
 					raidText += "★★ DEFENSE FROM (" + raidResults.u + ") & ";
@@ -204,10 +197,6 @@
 					} else {
 						raidText += "LOST ➨ Looted (" + shortenAmount(raidResults.money) + ") ✦ Killed (" + shortenAmount(raidResults.eK) + ") ✦ Lost (" + shortenAmount(raidResults.dK) + ")";
 					}
-					// Tell the group when our own raid defense wears off
-					setTimeout(function() {
-						silenceConditional("★★ I CAN BE RAIDED AGAIN");
-					}, 60 * 10 * 1000);
 				}
 				silenceConditional(raidText);
 			});
