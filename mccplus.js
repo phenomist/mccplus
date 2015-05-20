@@ -65,7 +65,7 @@
 			// Settings
 			var mccPlus_GB_Timeout = 624;
 			var mccPlus_Version = "33.0.0";
-			var mccPlus_Version_Date = "05/20/2015 04:04 PST";
+			var mccPlus_Version_Date = "2015-05-20 - 20:23 UTC";
 			var mccPlus_RBUp = "";
 			var mccPlus_Raid = "";
 			var mccPlus_GBUp = "";
@@ -96,6 +96,12 @@
 				setRaidTimer();
 			}, 5000);
 
+			var styles = ".mccp-audio { position: relative; z-index: 1; } .new-chat { z-index: 10; }";
+			var styleElem = document.createElement('style');
+			styleElem.innerHTML = styles;
+			styleElem.classList.add('mccp-component');
+			document.body.appendChild(styleElem);
+
 			// Reset!
 			this.client.off('popup'); // gets rid of RB notifs.
 			this.client.off('battleresult'); // no more battle result popups. They still get reported ingroup though.
@@ -104,7 +110,7 @@
 			document.getElementById("vault_container").innerHTML = '<center><div id="raid1c"></div></center><div id = "employment" style="margin-top:3px"><div id = "refresh"><table name="soldiers" cellpadding="8" type="tab" class="hidden" style="display: table;"><tbody><tr name="knight"><td><img src="game/img/npc/viking.png" height="32"><br><b>Viking</b><br>$<span name="price">300</span> - KPE: <span name="kpe">4</span></td><td><button name="buy-knight">Buy</button><button name="buymax-knight">Buy Max</button><br>You own <span name="owned"></span><br>Total KPE: <span name="totalKPE"></span></td></tr></table></div><table><tr><td><img src="game/img/npc/steve.png" height="32"><br><b><span name="scientists_price">2 BC</span></b><br>Rate: +<span name="scientistTime">15</span>s<br><center><font size="2"><a href="#" name="scientistBuyMode" style="color: rgb(42, 110, 116);">Change currency type to money</a></font></center></td><td>You own <span name="scientists_owned">87830</span> scientists.<br><button name="hire_scientist">Buy</button> &nbsp;<button name="fire_scientist">Sell</button><br><button name="hirex_scientists">Buy X</button><button name="hiremax_scientists">Buy max</button></td></tr></table></div>'
 
 			// Adding Audio Divs
-			$('body').append('<div class="mccp-component" style="position: relative; z-index: -10;" id="mccPlus_Audio"></div>');
+			$('body').append('<div class="mccp-component mccp-audio" id="mccPlus_Audio"></div>');
 			$('#mccPlus_Audio').append('<audio controls id="mccPlus_Audio_GB" src="http://www.dunsworth.net/trugul/GBS.mp3">Not Supported</audio>')
 				.append('<audio controls id="mccPlus_Audio_RB" src="http://www.dunsworth.net/trugul/RBR.mp3">Not Supported</audio>')
 				.append('<audio controls id="mccPlus_Audio_LO" src="http://www.dunsworth.net/trugul/LO.mp3">Not Supported</audio>')
@@ -155,6 +161,18 @@
 				}
 			}.bind(this);
 
+			// Set Raid Timer
+			var setRaidTimer = function() {
+				var timeTilRaid = (300000 - new Date().getTime() + game.lastRaid);
+				mccPlus_Raid = "";
+				updateTitle();
+				setTimeout(function() {
+					mccPlus_Raid = "R" + mccPlus_Raid;
+					updateTitle();
+					$('#mccPlus_Audio_RR')[0].play();
+				}, timeTilRaid);
+			}.bind(this);
+
 			// Publish raid results to your Group Chat
 			this.socketOn('battleresult', function(raidResults) {
 				var raidText = "";
@@ -193,18 +211,6 @@
 				}
 				silenceConditional(raidText);
 			});
-
-			// Set Raid Timer
-			var setRaidTimer = function() {
-				var timeTilRaid = (300000 - new Date().getTime() + game.lastRaid);
-				mccPlus_Raid = "";
-				updateTitle();
-				setTimeout(function() {
-					mccPlus_Raid = "R" + mccPlus_Raid;
-					updateTitle();
-					$('#mccPlus_Audio_RR')[0].play();
-				}, timeTilRaid);
-			}.bind(this);
 
 			// Title Updater derived a bit from Barry's Mod
 			var updateTitle = function() {
@@ -430,20 +436,23 @@
 			//add  raid ui
 			var ruid = ($("b#playerName").text());
 			httpGet("http://amglb.x10host.com/1clickraids.php?name=" + ruid, function(html) {
-					$('body').append('<br><br><center><div id="raid1c"></div></center>');
-					document.getElementById("raid1c").innerHTML = '<center><h2><a href="http://amglb.x10host.com/display2.php?name=' + ruid + '" target="_blank"><font color="red"><u>Check Raid Info</u></font></a></h2></center><center><table id="rdtbl">';
-					document.getElementById("rdtbl").innerHTML = '<tr id="rdr">';
-					document.getElementById("rdr").innerHTML = '<td><select id="rtsel" name="rtsel" style="height:25px; font-weight:bold;">';
-					var arraynms = html.split(",");
-					var arraynmsL = arraynms.length;
-					for (var arrcnt = 0; arrcnt < arraynmsL; arrcnt++) {
-						document.getElementById("rtsel").innerHTML += '<option value="' + arraynms[arrcnt] + '">' + arraynms[arrcnt] + '</option>';
-					} //end for
-					document.getElementById("rdr").innerHTML += '</select></td><td><button onclick="cr1();">RAID</button><button onclick="raidclear();">CLEAR</button></td>';
-					document.getElementById("rdtbl").innerHTML += '</tr>';
-					document.getElementById("raid1c").innerHTML += '</table>';
-					document.getElementById("raid1c").innerHTML += '<textarea id="rdmsgs" rows="10" cols="40"></textarea>';
-				}) //end function
+				$('body').append('<br><br><center><div id="raid1c"></div></center>');
+				document.getElementById("raid1c").innerHTML = '<center><h2><a href="http://amglb.x10host.com/display2.php?name=' + ruid + '" target="_blank"><font color="red"><u>Check Raid Info</u></font></a></h2></center><center><table id="rdtbl">';
+				document.getElementById("rdtbl").innerHTML = '<tr id="rdr">';
+				document.getElementById("rdr").innerHTML = '<td><select id="rtsel" name="rtsel" style="height:25px; font-weight:bold;">';
+				var arraynms = html.split(",");
+				var arraynmsL = arraynms.length;
+				for (var arrcnt = 0; arrcnt < arraynmsL; arrcnt++) {
+					document.getElementById("rtsel").innerHTML += '<option value="' + arraynms[arrcnt] + '">' + arraynms[arrcnt] + '</option>';
+				} //end for
+				document.getElementById("rdr").innerHTML += '</select></td><td><button class="raid-button">RAID</button><button class="raid-clear-button">CLEAR</button></td>';
+				document.getElementById("rdtbl").innerHTML += '</tr>';
+				document.getElementById("raid1c").innerHTML += '</table>';
+				document.getElementById("raid1c").innerHTML += '<textarea id="rdmsgs" rows="10" cols="40"></textarea>';
+
+				this.domOn(document.querySelector('#rdr .raid-button'), 'click', cr1.bind(this));
+				this.domOn(document.querySelector('#rdr .raid-clear-button'), 'click', raidclear.bind(this));
+			}.bind(this)) //end function
 
 			//auto update raid dropdown list once per hour
 			setInterval(function() {
