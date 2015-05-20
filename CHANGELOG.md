@@ -2,6 +2,12 @@
 
 ## Main branch
 
+### 33.3.0
+* Add >commands command
+
+### 33.2.0
+* Remove >def command
+
 ### 33.1.0
 * Removed defense timer messages now that the defense timers were removed from AMG
 
