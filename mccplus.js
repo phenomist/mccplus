@@ -302,6 +302,9 @@
 							case "afk":
 								text = args[0] + " has been afk for " + timeProcessor(new Date - mccPlus_LastClicked);
 								break;
+              case "commands":
+                text = ">afk, >commands, >def, >load, >status, >version, >link; all commands can take a player as an argument which directs that player's chatbot to respond."
+                break;
 							case "def":
 								text = args[0] + " has not been attacked for " + timeProcessor(new Date - mccPlus_LastDef) + ". They can be attacked again in " + timeProcessor(600000 - (new Date - mccPlus_LastDef));
 								break;
