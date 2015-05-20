@@ -295,9 +295,15 @@
 					var text = "";
 
 					if (cieq((args[0] || ''), mccPlus_Username) || (cieq(mccPlus_Username, requester) && args[0] == undefined)) {
+            if (args[0] == undefined) {
+              args[0] == mccPlus_Username;
+            }
 						switch (command.toLowerCase()) {
 							case "afk":
 								text = args[0] + " has been afk for " + timeProcessor(new Date - mccPlus_LastClicked);
+								break;
+							case "commands":
+								text = ">afk, >commands, >def, >load, >status, >version, >link; all commands can take a player as an argument which directs that player's chatbot to respond."
 								break;
 							case "load":
 								text = args[0] + " has been running this script for " + timeProcessor(new Date - mccPlus_LastLoad);
