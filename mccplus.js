@@ -295,9 +295,9 @@
 					var text = "";
 
 					if (cieq((args[0] || ''), mccPlus_Username) || (cieq(mccPlus_Username, requester) && args[0] == undefined)) {
-            if (args[0] == undefined) {
-              args[0] == mccPlus_Username;
-            }
+						if (args[0] == undefined) {
+							args[0] == mccPlus_Username;
+						}
 						switch (command.toLowerCase()) {
 							case "afk":
 								text = args[0] + " has been afk for " + timeProcessor(new Date - mccPlus_LastClicked);
