@@ -1,5 +1,5 @@
 /**
- * MCC+ v33.2.0
+ * MCC+ v33.3.0
  * Created for "A Mining Game", http://www.trugul.com/
  * Authors:
  * - TehShortbus (original script)
@@ -64,8 +64,8 @@
 
 			// Settings
 			var mccPlus_GB_Timeout = 624;
-			var mccPlus_Version = "33.2.0";
-			var mccPlus_Version_Date = "2015-05-20 - 20:23 UTC";
+			var mccPlus_Version = "33.3.0";
+			var mccPlus_Version_Date = "2015-05-20 - 23:37 UTC";
 			var mccPlus_RBUp = "";
 			var mccPlus_Raid = "";
 			var mccPlus_GBUp = "";
@@ -303,7 +303,7 @@
 								text = args[0] + " has been afk for " + timeProcessor(new Date - mccPlus_LastClicked);
 								break;
 							case "commands":
-								text = ">afk, >commands, >def, >load, >status, >version, >link; all commands can take a player as an argument which directs that player's chatbot to respond."
+								text = ">afk, >commands, >load, >status, >version, >link; all commands can take a player as an argument which directs that player's chatbot to respond."
 								break;
 							case "load":
 								text = args[0] + " has been running this script for " + timeProcessor(new Date - mccPlus_LastLoad);
