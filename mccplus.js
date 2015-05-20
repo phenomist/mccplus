@@ -1,5 +1,5 @@
 /**
- * MCC+ v33.0.0
+ * MCC+ v33.1.0
  * Created for "A Mining Game", http://www.trugul.com/
  * Authors:
  * - TehShortbus (original script)
@@ -64,7 +64,7 @@
 
 			// Settings
 			var mccPlus_GB_Timeout = 624;
-			var mccPlus_Version = "33.0.0";
+			var mccPlus_Version = "33.1.0";
 			var mccPlus_Version_Date = "2015-05-20 - 20:23 UTC";
 			var mccPlus_RBUp = "";
 			var mccPlus_Raid = "";
