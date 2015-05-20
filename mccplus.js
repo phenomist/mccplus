@@ -319,9 +319,8 @@
 								text = "Running MCC+ version " + mccPlus_Version + ".";
 								break;
 							case "link":
-								var cachebust = (new Date()).getTime();
-								text = ".\nNormal script: https://cdn.rawgit.com/phenomist/mccplus/master/mccplus.js?t=" + cachebust +
-									"\nUserscript: https://cdn.rawgit.com/phenomist/mccplus/master/mccplus.user.js?t=" + cachebust +
+								text = ".\nNormal script: https://rawgit.com/phenomist/mccplus/master/mccplus.js?t=" + cachebust +
+									"\nUserscript: https://rawgit.com/phenomist/mccplus/master/mccplus.user.js?t=" + cachebust +
 									"\nRepository: https://github.com/phenomist/mccplus";
 								break;
 						}

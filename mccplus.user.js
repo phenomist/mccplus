@@ -7,7 +7,7 @@
 
 function loadScript() {
 	var script = document.createElement('script');
-	script.src = 'https://cdn.rawgit.com/phenomist/mccplus/master/mccplus.js?t=' + (new Date()).getTime().toString();
+	script.src = 'https://rawgit.com/phenomist/mccplus/master/mccplus.js?t=' + (new Date()).getTime().toString();
 	document.body.appendChild(script);
 }
 
