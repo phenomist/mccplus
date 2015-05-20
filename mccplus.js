@@ -325,6 +325,7 @@
 								text = "Running MCC+ version " + mccPlus_Version + ".";
 								break;
 							case "link":
+								var cachebust = (new Date()).getTime().toString();
 								text = ".\nNormal script: https://rawgit.com/phenomist/mccplus/master/mccplus.js?t=" + cachebust +
 									"\nUserscript: https://rawgit.com/phenomist/mccplus/master/mccplus.user.js?t=" + cachebust +
 									"\nRepository: https://github.com/phenomist/mccplus";
