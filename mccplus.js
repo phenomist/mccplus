@@ -1,5 +1,5 @@
 /**
- * MCC+ v33.1.0
+ * MCC+ v33.2.0
  * Created for "A Mining Game", http://www.trugul.com/
  * Authors:
  * - TehShortbus (original script)
@@ -64,7 +64,7 @@
 
 			// Settings
 			var mccPlus_GB_Timeout = 624;
-			var mccPlus_Version = "33.1.0";
+			var mccPlus_Version = "33.2.0";
 			var mccPlus_Version_Date = "2015-05-20 - 20:23 UTC";
 			var mccPlus_RBUp = "";
 			var mccPlus_Raid = "";
@@ -299,16 +299,13 @@
 							case "afk":
 								text = args[0] + " has been afk for " + timeProcessor(new Date - mccPlus_LastClicked);
 								break;
-							case "def":
-								text = args[0] + " has not been attacked for " + timeProcessor(new Date - mccPlus_LastDef) + ". They can be attacked again in " + timeProcessor(600000 - (new Date - mccPlus_LastDef));
-								break;
 							case "load":
 								text = args[0] + " has been running this script for " + timeProcessor(new Date - mccPlus_LastLoad);
 								break;
 							case "status": // fuzzy troopcount counter
 								var tc = game.employedSoldiers.knight + game.employedSoldiers.advknight + game.employedSoldiers.templar;
 								text = "[TROOPS: " + (tc > 0 ? (tc > 1e11 ? "MANY" : "SOME") : "NONE");
-								text += "] [WORKERS: " + (game.workerToggle ? "ON" : "OFF") + "]" + (mccPlus_silence ? "[silence mode]" : "");
+								text += "] [WORKERS: " + (game.workerToggle ? "ON" : "OFF") + "]" + (mccPlus_silence ? " [silence mode]" : "");
 								break;
 							case "version":
 								text = "Running MCC+ version " + mccPlus_Version + ".";
