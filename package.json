@@ -1,0 +1,18 @@
+{
+  "name": "mccplus",
+  "version": "0.0.0",
+  "description": "An addon for A Mining Game, formerly known as Minecraft Clicker.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phenomist/mccplus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/phenomist/mccplus/issues"
+  },
+  "homepage": "https://github.com/phenomist/mccplus",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jsbeautifier": "0.0.8",
+    "gulp-jshint": "^1.10.0"
+  }
+}
