@@ -11,8 +11,10 @@
   },
   "homepage": "https://github.com/phenomist/mccplus",
   "devDependencies": {
+    "finalhandler": "^0.3.6",
     "gulp": "^3.8.11",
     "gulp-jsbeautifier": "0.0.8",
-    "gulp-jshint": "^1.10.0"
+    "gulp-jshint": "^1.10.0",
+    "serve-static": "^1.9.3"
   }
 }
